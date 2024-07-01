@@ -1,0 +1,120 @@
+﻿
+
+<body id="page-top">
+
+    <div id="content-wrapper" class="d-flex flex-column" style="min-height: 80vh; margin-bottom: 50px; display: flex; justify-content: space-evenly;margin-top: 50px">
+
+        <div id="content">
+
+            <div class="container">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h1 mb-0 text-gray-800">Dashboard</h1>
+                </div>
+                <div class="row">
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <a asp-controller="QLProduct" class="col-xl-4 col-md-6 mb-4" style="text-decoration: none;">
+                        <div class="card border-left-primary shadow py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-md font-weight-bold text-primary text-uppercase mb-1">
+                                            Product Management
+                                        </div>
+                                        <div class="h4 mb-0 font-weight-bold text-gray-800">@ViewBag.countProduct</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar fa-2x" style="color: #dddfeb;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <a asp-controller="QLTaiKhoan" class="col-xl-4 col-md-6 mb-4" style="text-decoration: none">
+                        <div class="card border-left-success shadow py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-md font-weight-bold text-success text-uppercase mb-1">
+                                            Account management
+                                        </div>
+                                        <div class="h4 mb-0 font-weight-bold text-gray-800">@ViewBag.countAccount</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="far fa-user-circle fa-2x" style="color: #dddfeb"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <a asp-controller="QLHoaDon" class="col-xl-4 col-md-6 mb-4" style="text-decoration: none">
+                        <div class="card border-left-danger shadow py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-md font-weight-bold text-danger text-uppercase mb-1">
+                                            Order management
+                                        </div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <div class="h4 mb-0 mr-3 font-weight-bold text-gray-800">@ViewBag.countOrder</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-dollar-sign fa-2x" style="color: #dddfeb"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Pending Requests Card Example -->
+                    <a asp-controller="TheLoai" class="col-xl-4 col-md-6 mb-4" style="text-decoration: none">
+                        <div class="card border-left-info shadow py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-md font-weight-bold text-info text-uppercase mb-1">
+                                            Category management
+                                        </div>
+                                        <div class="h4 mb-0 font-weight-bold text-gray-800">@ViewBag.countTheLoai</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-boxes fa-2x" style="color: #dddfeb"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Pending Requests Stock Example -->
+                    <a asp-controller="QLProduct" asp-action="InStock" class="col-xl-4 col-md-6 mb-4" style="text-decoration: none">
+                        <div class="card border-left-warning shadow py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-md font-weight-bold text-warning text-uppercase mb-1">
+                                            Inventory management
+                                        </div>
+                                        <div class="h4 mb-0 font-weight-bold text-gray-800">@ViewBag.countInStock</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-warehouse fa-2x" style="color: #dddfeb"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

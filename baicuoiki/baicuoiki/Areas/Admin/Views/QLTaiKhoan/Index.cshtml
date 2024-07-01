@@ -1,0 +1,67 @@
+﻿
+<div style="display:flex; margin:150px 0">
+	<div class="container">
+		<div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 20px">
+			<h1 class="h1 mb-0 text-gray-800">Accound List</h1>
+		
+		</div>
+
+		<div class="shadow" style="background-color: #fff; padding: 20px">
+
+			<div style="/* display:flex; justify-content:space-between; gap: 20px; margin: 10px 0 20px */">
+				@using (Html.BeginForm("Index", "QLTaiKhoan", new { page = 1 }, FormMethod.Get))
+				{
+					<div style="width:60%; margin-bottom:30px; display: flex; gap: 10px">
+						@Html.TextBox("Searching", "", new { @class = "form-control" })
+						<input type="submit" class="btn btn-warning" value="Search" />
+					</div>
+				}
+
+			</div>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="col-2">Email</th>
+						<th class="col-3">Address</th>
+						<th class="col-2">Phone</th>
+						<th class="col-2">Role</th>
+
+						<th class="col-2"></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>@item.Email</td>
+							<td>@item.Address</td>
+							<td>@item.Phone</td>
+							@if (@item.Email == "thanhadmin@gmail.com")
+							{
+								<td>Admin</td>
+								<td>
+								</td>
+							}
+							else
+							{
+								<td>User</td>
+								<td>
+									<a asp-controller="QLTaiKhoan" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" title="Remove accound"
+									   onclick="return confirm('Do you really want to remove this accound ??')">
+										<i class="fas fa-trash-alt"></i>
+									</a>
+								</td>
+							}
+
+						</tr>
+					}
+				</tbody>
+			</table>
+
+			
+		</div>
+		</div>
+	</div>
+</div>
+

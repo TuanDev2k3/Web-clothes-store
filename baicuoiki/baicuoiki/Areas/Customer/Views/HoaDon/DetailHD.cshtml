@@ -1,0 +1,54 @@
+﻿@{
+	ViewBag.Title = "Detail Order";
+}
+<div style="display:flex; margin:150px 0">
+	<div class="container">
+		<div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 20px">
+			<h1 class="h1 mb-0 text-gray-800">Detail Order</h1>
+		</div>
+
+
+		<div class="shadow" style="background-color: #fff; padding: 20px">
+
+			<h6 class="col-4">Name: <span class="text-primary">@ViewBag.TTDonHang.Name</span></h6>
+			<h6 class="col-4">Phone: <span class="text-primary">@ViewBag.TTDonHang.PhoneNumber</span></h6>
+			<h6 class="col-4">Address: <span class="text-primary">@ViewBag.TTDonHang.Address</span></h6>
+			<h6 class="col-4">OrderStatus: <span class="text-success">@ViewBag.TTDonHang.OrderStatus</span></h6>
+			<h6 class="col-4">Ship: <span class="text-danger">$3</span></h6>
+
+			<table class="table" style="margin-top: 20px">
+				
+				<thead>
+					
+					<tr>
+						<th class="col-1">Image</th>
+						<th class="col-3">Name</th>
+						<th class="col-2">Quantity</th>
+						<th class="col-1">Price</th>
+						<th class="col-2"></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in @ViewBag.Donhang)
+					{
+						<tr>
+							<td><img width="40%" src="~/@item.ProDuct.ImageUrl" /></td>
+							<td>@item.ProDuct.Name</td>
+							<td>@item.Quantity</td>
+							<td>$@item.ProductPrice</td>
+						</tr>
+					}
+					<tr style="color: red; font-size: 20px; font-weight: bold">
+						<td>Total: $@ViewBag.Total</td>
+					</tr>
+				</tbody>
+				
+			</table>
+			<div class="form-group">
+				<a asp-controller="HoaDon" asp-action="Index" class="btn btn-black btn-lg py-3 btn-block mt-5" style="width: 30%; background-color: black; color: white; margin-left: 330px" onclick="window.location='thankyou.html'">Cancel</a>
+			</div>
+			
+		</div>
+	</div>
+</div>
+

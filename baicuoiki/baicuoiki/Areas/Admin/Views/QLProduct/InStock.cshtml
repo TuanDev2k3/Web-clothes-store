@@ -1,0 +1,88 @@
+﻿@model PagedList.IPagedList<ProDuct>
+@using PagedList.Mvc
+<div style="display:flex; margin:150px 0">
+	<div class="container">
+		<div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 20px">
+			<h1 class="h1 mb-0 text-gray-800">Inventory List</h1>
+		</div>
+
+		<div class="shadow" style="background-color: #fff; padding: 20px">
+			<div style=" display:flex; justify-content:space-between; gap: 20px; margin: 10px 0 20px">
+				@using (Html.BeginForm("InStock", "QLProduct", new { page = 1 }, FormMethod.Get))
+				{
+					<div style="width:600px; margin-bottom:30px; display: flex; gap: 10px">
+						@Html.TextBox("Searching", "", new { @class = "form-control" })
+						<input type="submit" class="btn btn-warning" value="Search" />
+					</div>
+					
+				}
+				<div style="height: 100%">
+					<a class="btn btn-success mr-3" style="cursor: pointer; height: 100%; color: #fff" asp-route-inStock="true">InStock</a>
+					<a class="btn btn-danger" style="cursor: pointer; height: 100%; color: #fff" asp-route-inStock="false">OutStock</a>
+				</div>
+			</div>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="col-2">Image</th>
+						<th class="col-3">NameProduct</th>
+						<th class="col-2">Price</th>
+						<th class="col-2">QuantityInStock</th>
+						<th class="col-2"></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td style="width: 30px; height: 100px">
+								<img width="50%" height="100%" src="~/@item.ImageUrl" />
+							</td>
+							<td>@item.Name</td>
+							<td>$@item.Price</td>
+							<td style="font-weight: 700; color: @(item.QuantityInStock <= 0 ? "red" : "green")">@(item.QuantityInStock <= 0 ? "Out stock" : @item.QuantityInStock )</td>
+							<td>
+								<a asp-controller="QLProduct" asp-action="EditStock" asp-route-id="@item.Id" class="btn btn-warning" title="Edit stock"><i class="far fa-edit"></i></a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+
+			@* ================PageList================== *@
+			@{
+				var currentPage = Model.PageNumber;
+				var totalPages = Model.PageCount;
+				var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+				var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+			}
+			<ul class="pagination">
+				@if (Model.PageNumber > 1)
+				{
+					<li class="page-item">
+						<a class="page-link" href="@Url.Action("InStock", new { page = 1, Searching = ViewBag.Searching })" aria-label="First">
+							<span aria-hidden="true">&laquo;&laquo;</span>
+							<span class="sr-only">First</span>
+						</a>
+					</li>
+				}
+				@for (int i = Math.Max(1, Model.PageNumber - 1); i <= Math.Min(Model.PageCount, Model.PageNumber + 1); i++)
+				{
+					<li class="page-item @(i == Model.PageNumber ? "active" : "")">
+						<a class="page-link" href="@Url.Action("InStock", new { page = i, Searching = ViewBag.Searching })">@i</a>
+					</li>
+				}
+				@if (Model.PageNumber < Model.PageCount)
+				{
+					<li class="page-item">
+						<a class="page-link" href="@Url.Action("InStock", new { page = Model.PageCount, Searching = ViewBag.Searching })" aria-label="Last">
+							<span aria-hidden="true">&raquo;&raquo;</span>
+							<span class="sr-only">Last</span>
+						</a>
+					</li>
+				}
+			</ul>
+		</div>
+	</div>
+</div>

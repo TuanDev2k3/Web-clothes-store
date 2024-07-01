@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<div style="display:flex magrin:150px 0">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>@ViewData["Title"] - TShoppingK</title>
+		<title>TShoppingK</title>
+		<meta name="description" content="An online store specializing in selling a variety of men's, women's, and children's clothing with diverse styles and designs.">
+		<meta name="keywords" content="clothing, fashion, shirts, dresses, jeans, jackets">
+		<meta name="author" content="Store Name">
+		<meta name="google-site-verification" content="IUrwonc90H3oz4ENooeN1wGVM2SmTQi4in3RrRXMeVk" />
+		<meta name="TShoppingK" content="width=device-width, initial-scale=1">
+		<!--===============================================================================================-->
+		<link rel="icon" type="image/png" href=" ~/images/icons/favicon.png" />
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="~/fonts/iconic/css/material-design-iconic-font.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="~/fonts/linearicons-v1.0.0/icon-font.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="~/vendor/slick/slick.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="~/vendor/MagnificPopup/magnific-popup.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="~/vendor/perfect-scrollbar/perfect-scrollbar.css">
+		<!--===============================================================================================-->
+
+		<link rel="stylesheet" type="text/css" href="~/css/util.css">
+		<link rel="stylesheet" type="text/css" href="~/css/main.css">
+		<link rel="stylesheet" type="text/css" href="~/css/mainAdmin.css">
+
+		<link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+		<!-- Custom styles for this template-->
+		
+
+		<!--===============================================================================================-->
+	</head>
+	<body>
+
+		<!-- Header -->
+		<header>
+			<!-- Header desktop -->
+
+
+			<div class="wrap-menu-desktop">
+				<nav class="limiter-menu-desktop container">
+
+						<!-- Logo desktop -->
+						<a asp-area="Admin" asp-controller="Home" asp-action="Index" class="logo">
+							<img src="~/images/logo-tK.jpg" alt="IMG-LOGO" width="100%">
+							<p style="font-size: 18px; color: #000; margin-left: 5px; font-weight: 600">TShopingK</p>
+						</a>
+
+						<!-- Menu desktop -->
+						
+
+						<!-- Icon header -->
+					<div class="wrap-icon-header flex-w flex-r-m">
+							<partial name="_LoginPartial" />
+					</div>
+				</nav>
+			</div>
+		</header>
+		@RenderBody()
+		<!-- Footer -->
+		<footer class="bg3 p-t-75 p-b-32">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">
+							Categories
+						</h4>
+
+						<ul>
+							<li class="p-b-10 stext-107 cl7 hov-cl1 trans-04">
+								Women
+							</li>
+
+							<li class="p-b-10 stext-107 cl7 hov-cl1 trans-04">
+									Men
+							</li>
+
+							<li class="p-b-10 stext-107 cl7 hov-cl1 trans-04">
+									Shoes
+							</li>
+
+							<li class="p-b-10 stext-107 cl7 hov-cl1 trans-04">
+									Watches								
+							</li>
+						</ul>
+					</div>
+
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">
+							Help
+						</h4>
+
+						<ul>
+							<li class="p-b-10 stext-107 cl7 hov-cl1 trans-04">
+									Track Order
+							</li>
+
+							<li class="p-b-10 stext-107 cl7 hov-cl1 trans-04">
+									Returns
+							</li>
+
+							<li class="p-b-10 stext-107 cl7 hov-cl1 trans-04">
+									Shipping
+							</li>
+
+							<li class="p-b-10 stext-107 cl7 hov-cl1 trans-04">
+									FAQs
+							</li>
+						</ul>
+					</div>
+
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">
+							GET IN TOUCH
+						</h4>
+
+						<p class="stext-107 cl7 size-201">
+							Any questions? Let us know in store at DNTU, Nguyen Khuyen Street, Bien Hoa, Dong Nai or call us on (0976) 867 854 - tshoppingk
+						</p>
+
+						<div class="p-t-27">
+							<a href="https://www.facebook.com/" target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+								<i class="fab fa-facebook"></i>
+							</a>
+
+							<a href="https://www.youtube.com/" target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+								<i class="fab fa-youtube"></i>
+							</a>
+
+							<a href="https://www.tiktok.com/vi-VN/" target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+								<i class="fab fa-tiktok"></i>
+							</a>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-lg-3 p-b-50">
+						<h4 class="stext-301 cl0 p-b-30">
+							Newsletter
+						</h4>
+
+						<div>
+							<div class="wrap-input1 w-full p-b-4">
+								<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="tshoppingk@gmail.com">
+								<div class="focus-input1 trans-04"></div>
+							</div>
+
+							<div class="p-t-18">
+								<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+									Subscribe
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="p-t-40">
+					<div class="flex-c-m flex-w p-b-18">
+						<a href="#" class="m-all-1">
+							<img src="~/images/icons/icon-pay-01.png" alt="ICON-PAY">
+						</a>
+
+						<a href="#" class="m-all-1">
+							<img src="~/images/icons/icon-pay-02.png" alt="ICON-PAY">
+						</a>
+
+						<a href="#" class="m-all-1">
+							<img src="~/images/icons/icon-pay-03.png" alt="ICON-PAY">
+						</a>
+
+						<a href="#" class="m-all-1">
+							<img src="~/images/icons/icon-pay-04.png" alt="ICON-PAY">
+						</a>
+
+						<a href="#" class="m-all-1">
+							<img src="~/images/icons/icon-pay-05.png" alt="ICON-PAY">
+						</a>
+					</div>
+
+					<p class="stext-107 cl6 txt-center">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+					</p>
+				</div>
+				<div style="background-color: white; text-align: center; padding: 10px; color: red; font-size: 20px">Đây là sản phẩm của sinh viên dành cho học tập - This is a student product for study</div>
+			</div>
+		</footer>
+		@* ==================================================================================================== *@
+		@* ==================================================================================================== *@
+		@* ==================================================================================================== *@
+
+
+		
+		<!--===============================================================================================-->
+		<script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="~/vendor/animsition/js/animsition.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="~/vendor/bootstrap/js/popper.js"></script>
+		<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="~/vendor/select2/select2.min.js"></script>
+		<script>
+			$(".js-select2").each(function () {
+				$(this).select2({
+					minimumResultsForSearch: 20,
+					dropdownParent: $(this).next('.dropDownSelect2')
+				});
+			})
+		</script>
+		<!--===============================================================================================-->
+		<script src="~/vendor/daterangepicker/moment.min.js"></script>
+		<script src="~/vendor/daterangepicker/daterangepicker.js"></script>
+		<!--===============================================================================================-->
+		<script src="~/vendor/slick/slick.min.js"></script>
+		<script src="~/js/slick-custom.js"></script>
+		<!--===============================================================================================-->
+		<script src="~/vendor/parallax100/parallax100.js"></script>
+		<script>
+			$('.parallax100').parallax100();
+		</script>
+		<!--===============================================================================================-->
+		<script src="~/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+		<script>
+			$('.gallery-lb').each(function () { // the containers for all your galleries
+				$(this).magnificPopup({
+					delegate: 'a', // the selector for gallery item
+					type: 'image',
+					gallery: {
+						enabled: true
+					},
+					mainClass: 'mfp-fade'
+				});
+			});
+		</script>
+		<!--===============================================================================================-->
+		<script src="~/vendor/isotope/isotope.pkgd.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="~/vendor/sweetalert/sweetalert.min.js"></script>
+		<script>
+			$('.js-addwish-b2').on('click', function (e) {
+				e.preventDefault();
+			});
+
+			$('.js-addwish-b2').each(function () {
+				var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+				$(this).on('click', function () {
+					swal(nameProduct, "is added to wishlist !", "success");
+
+					$(this).addClass('js-addedwish-b2');
+					$(this).off('click');
+				});
+			});
+
+			$('.js-addwish-detail').each(function () {
+				var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+				$(this).on('click', function () {
+					swal(nameProduct, "is added to wishlist !", "success");
+					$(this).addClass('js-addedwish-detail');
+					$(this).off('click');
+				});
+			});
+
+			/*---------------------------------------------*/
+
+			$('.js-addcart-detail').each(function () {
+				var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+				$(this).on('click', function () {
+					swal(nameProduct, "is added to cart !", "success");
+				});
+			});
+
+		</script>
+		<!--===============================================================================================-->
+		<script src="~/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+		<script>
+			$('.js-pscroll').each(function () {
+				$(this).css('position', 'relative');
+				$(this).css('overflow', 'hidden');
+				var ps = new PerfectScrollbar(this, {
+					wheelSpeed: 1,
+					scrollingThreshold: 1000,
+					wheelPropagation: false,
+				});
+
+				$(window).on('resize', function () {
+					ps.update();
+				})
+			});
+		</script>
+		<!--===============================================================================================-->
+		<script src="~/js/main.js"></script>
+		<script src="~/lib/jquery/dist/jquery.min.js"></script>
+		<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="~/js/site.js" asp-append-version="true"></script>
+		<script src="~/vendor/jquery/jquery.min.js"></script>
+		<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Core plugin JavaScript-->
+		<script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script src="~/js/demo/sb-admin-2.min.js"></script>
+
+		<!-- Page level plugins -->
+		@* <script src="~/vendor/chart.js/Chart.min.js"></script> *@
+
+		<!-- Page level custom scripts -->
+		@* <script src="~/js/demo/chart-area-demo.js"></script> *@
+		@* <script src="~/js/demo/chart-pie-demo.js"></script> *@
+		@await RenderSectionAsync("Scripts", required: false)
+
+	</body>
+</html>

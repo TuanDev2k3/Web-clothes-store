@@ -1,0 +1,62 @@
+﻿@model IEnumerable<HoaDon>
+<!-- Start Hero Section -->
+
+<div>
+<div class="hero">
+<!-- End Hero Section -->
+
+<div class="untree_co-section">
+	<div  class="container">
+					<div class="row mb-5" style="width: 100%; justify-content: center; margin-top: 100px">
+					<div class="col-md-12">
+						<h2 class="h3 mb-3 text-black" style="text-align: center; font-weight: bold">Your order</h2>
+						<div class="p-3 p-lg-5 border bg-white">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Name </th>
+					<th>Address </th>
+					<th>Phone </th>
+					<th>OrderTime</th>
+					<th>OrderStatus</th>
+					<th>Total</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+					@foreach (var item in Model)
+					{
+						
+						<tr>
+							<td>@item.Name</td>
+							<td>@item.Address</td>
+							<td>@item.PhoneNumber </td>
+							<td>@item.OrderTime </td>
+							<td>
+								<a asp-controller="HoaDon" asp-action="DetailHD" asp-route-id="@item.Id">@item.OrderStatus</a>
+							</td>
+							<td style="color: green">$@item.Toatal</td>
+							<td>
+												<a asp-action="DeleteConFirm" asp-route-id="@item.Id" class="btn btn-danger" title="Delete" onclick="return confirm('Do you really want to cancel this order ??')"><i class="fas fa-trash"></i></a>
+							</td>
+								
+						</tr>
+						
+					}
+			</tbody>
+		</table>
+
+					<div class="form-group">
+							<a asp-controller="Shop" asp-action="Index" class="btn btn-black btn-lg py-3 btn-block mt-5" style="width: 30%; background-color: black; color: white; margin-left: 330px" onclick="window.location='thankyou.html'">Continue</a>
+					</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- </form> -->
+	</div>
+</div>
+</div>

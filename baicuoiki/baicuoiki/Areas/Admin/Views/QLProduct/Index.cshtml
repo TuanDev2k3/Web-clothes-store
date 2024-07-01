@@ -1,0 +1,93 @@
+﻿@model PagedList.IPagedList<ProDuct>
+@using PagedList.Mvc
+@{
+	ViewBag.Title = "Product List";
+}
+<div style="display:flex; margin:150px 0">
+<div class="container">
+	<div style="display: flex; justify-content: space-between; width: 100%; margin-bottom: 20px">
+		<h1 class="h1 mb-0 text-gray-800">Product List</h1>
+		<a asp-controller="QLProduct" asp-action="Upsert" class="btn btn-success font-weight-bold"><i class="fas fa-plus mr-2 mt-2"></i> ADD</a>
+	</div>
+			
+
+	<div class="shadow" style="background-color: #fff; padding: 20px">
+
+			<div style="/* display:flex; justify-content:space-between; gap: 20px; margin: 10px 0 20px */">
+				@using (Html.BeginForm("Index", "QLProduct", new { page = 1 }, FormMethod.Get))
+				{
+					<div style="width:60%; margin-bottom:30px; display: flex; gap: 10px">
+						 @Html.TextBox("Searching", "", new { @class = "form-control" })
+						<input type="submit" class="btn btn-warning" value="Search" />
+					</div>
+				}
+				
+			</div>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th class="col-1">Image</th>
+						<th class="col-3">Name</th>
+						<th class="col-2">Category</th>
+						<th class="col-1">Price</th>
+						<th class="col-2"></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td><img width="50%" src="~/@item.ImageUrl" /></td>
+							<td>@item.Name</td>
+							<td>@item.SanPham.Name</td>
+							<td>$@item.Price</td>
+							<td>
+								<a asp-controller="QLProduct" asp-action="Upsert" asp-route-id="@item.Id" class="btn btn-primary" title="Edit product"><i class="far fa-edit"></i></a>
+								<a asp-controller="QLProduct" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" title="Remove product"
+								   onclick="return confirm('Do you really want to remove this product ??')">
+									<i class="fas fa-trash-alt"></i>
+								</a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+
+			@*============== PageList ============*@
+			@{
+				var currentPage = Model.PageNumber;
+				var totalPages = Model.PageCount;
+				var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+				var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+			}
+			<ul class="pagination">
+				@if (Model.PageNumber > 1)
+				{
+					<li class="page-item">
+						<a class="page-link" href="@Url.Action("Index", new { page = 1, Searching = ViewBag.Searching })" aria-label="First">
+							<span aria-hidden="true">&laquo;&laquo;</span>
+							<span class="sr-only">First</span>
+						</a>
+					</li>
+				}
+				@for (int i = Math.Max(1, Model.PageNumber - 1); i <= Math.Min(Model.PageCount, Model.PageNumber + 1); i++)
+				{
+					<li class="page-item @(i == Model.PageNumber ? "active" : "")">
+						<a class="page-link" href="@Url.Action("Index", new { page = i, Searching = ViewBag.Searching })">@i</a>
+					</li>
+				}
+				@if (Model.PageNumber < Model.PageCount)
+				{
+					<li class="page-item">
+						<a class="page-link" href="@Url.Action("Index", new { page = Model.PageCount, Searching = ViewBag.Searching })" aria-label="Last">
+							<span aria-hidden="true">&raquo;&raquo;</span>
+							<span class="sr-only">Last</span>
+						</a>
+					</li>
+				}
+			</ul>
+	</div>
+</div>
+</div>
+

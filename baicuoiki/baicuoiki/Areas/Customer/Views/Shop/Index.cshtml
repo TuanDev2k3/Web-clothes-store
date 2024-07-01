@@ -1,0 +1,258 @@
+﻿@model PagedList.IPagedList<baicuoiki.Models.ProDuct>
+@using PagedList.Mvc;
+<div style="margin:100px 0">
+	<!-- Product -->
+	<div class="bg0 m-t-23">
+		<div class="container">
+			<div class="flex-w flex-sb-m p-b-52">
+				<div class="p-b-10">
+					<h3 class="ltext-103 cl5">
+						Product Overview
+					</h3>
+				</div>
+
+
+				<div class="flex-w flex-c-m m-tb-10">
+					<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
+						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+						Filter
+					</div>
+
+					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
+						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+						Search
+					</div>
+				</div>
+
+				<!-- Search product -->
+				<div class="dis-none panel-search w-full p-t-10 p-b-15">
+					<div class=" dis-flex p-l-15 align-items-center">
+						<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+							<i class="zmdi zmdi-search"></i>
+						</button>
+						@using (Html.BeginForm("Index", "Shop", FormMethod.Get))
+						{
+							<div style="width:500px">
+								@Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+							</div>
+						}
+
+					</div>
+				</div>
+
+				<!-- Filter -->
+				<div class="dis-none panel-filter w-full p-t-10">
+					<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+						
+
+						<div class="filter-col2 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">
+								Price
+							</div>
+							<select id="priceFilter" class="form-control">
+								<option value="0-9999">Price</option>
+								<option value="0-9999">All Price</option>
+								<option value="0-50">$0.00 - $50.00</option>
+								<option value="50-100">$50.00 - $100.00</option>
+								<option value="100-150">$100.00 - $150.00</option>
+								<!-- add more price ranges as needed -->
+							</select>
+						</div>
+
+						<div class="filter-col3 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">
+								Categories
+							</div>
+
+							<ul>
+								<!-- Lặp qua danh sách thể loại và tạo các liên kết để chọn thể loại -->
+								@foreach (var category in ViewBag.Categories)
+								{
+									<li class="p-b-6">
+										<a href="@Url.Action("Index", new { categoryId = category.Id })" class="filter-link stext-106 trans-04" data-category-id="@category.Id">@category.Name</a>
+
+									</li>
+								}
+							</ul>
+						</div>
+
+							
+					</div>
+				</div>
+			</div>
+
+			<div class="row isotope-grid">
+				@foreach (var item in Model)
+				{
+
+					<div class="col-sm-6 col-md-4 col-lg-3 isotope-item women">
+
+						<div class="product-box my-3">
+							<div style="width: 100%; height: 260px; overflow: hidden">
+								<img src="~/@item.ImageUrl" alt="IMG-PRODUCT" class="product-img">
+
+							</div>
+							<hr style="width: 100%; margin: 0">
+							<div class="block2-txt flex-w flex-t p-t-14">
+								<div class="block2-txt-child1 flex-col-l ">
+									<a asp-controller="Shop" asp-action="ProDuctDetail" asp-route-productID="@item.Id" class="product-title" title="@item.Name">
+										@item.Name
+									</a>
+									<hr style="width: 100%">
+									<h4 class="product-price">$@item.Price</h4>
+									<a asp-controller="Shop" asp-action="ProDuctDetail" asp-route-productID="@item.Id" class="product-title">
+										<i class="fas fa-plus-circle icon-cart" title="Add To Detail"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				}
+
+
+
+			</div>
+		</div>
+
+		<!-- Load more -->
+		<div class="flex-c-m flex-w w-full">
+
+			<div class="flex-c-m flex-w w-full p-t-45" style="">
+				<nav aria-label="Page navigation">
+					<ul class="pagination">
+						@if (Model.HasPreviousPage)
+						{
+							<li class="page-item">
+								<a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber - 1, searchString = ViewBag.CurrentFilter })" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">Previous</span>
+								</a>
+							</li>
+						}
+						else
+						{
+							<li class="page-item disabled">
+								<span class="page-link" aria-hidden="true">&laquo;</span>
+							</li>
+						}
+
+						@for (int i = 1; i <= Model.PageCount; i++)
+						{
+							<li class="page-item @(i == Model.PageNumber ? "active" : "")">
+								<a class="page-link" href="@Url.Action("Index", new { page = i, searchString = ViewBag.CurrentFilter })">@i</a>
+							</li>
+						}
+
+						@if (Model.HasNextPage)
+						{
+							<li class="page-item">
+								<a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber + 1, searchString = ViewBag.CurrentFilter })" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+									<span class="sr-only">Next</span>
+								</a>
+							</li>
+						}
+						else
+						{
+							<li class="page-item disabled">
+								<span class="page-link" aria-hidden="true">&raquo;</span>
+							</li>
+						}
+					</ul>
+				</nav>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<style>
+	.product-box {
+		background-color: white;
+		box-shadow: 0px 0px 15px #bbb;
+		max-height: 400px;
+		transition: all .4s ease;
+		position: relative;
+	}
+
+		.product-box:hover {
+			box-shadow: 0px 0px 10px #454545;
+		}
+
+	.product-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		transition: all 0.5s linear;
+	}
+
+	.product-title {
+		margin-top: 3px;
+		padding: 0 10px;
+		font-size: 16px;
+		color: black;
+		cursor: pointer;
+		width: 100%;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		transition: all .5s linear;
+	}
+
+		.product-title:hover {
+			color: blue;
+		}
+
+	.product-price {
+		padding: 0 10px 12px;
+		font-size: 18px;
+		font-weight: bold;
+		color: #ff0000;
+		width: 100%;
+	}
+
+	.icon-cart {
+		font-size: 25px;
+		color: green;
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+		cursor: pointer;
+	}
+
+		.icon-cart:active {
+			color: red;
+		}
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Thêm thư viện jQuery -->
+<script>
+	$(document).ready(function () {
+		// Xử lý khi người dùng thay đổi giá tiền
+		$("#priceFilter").change(function () {
+			var selectedPriceRange = $(this).val();
+			var currentFilter = "@ViewBag.CurrentFilter"; // Lấy giá trị của ViewBag.CurrentFilter
+			var newUrl = '@Url.Action("Index", "Shop")' + '?searchString=' + currentFilter + '&priceRange=' + selectedPriceRange;
+			// Chuyển hướng đến trang mới với tham số giá tiền được chọn
+			window.location.href = newUrl;
+		});
+	});
+
+</script>
+<script>
+	$(document).ready(function () {
+		// Xử lý khi người dùng thay đổi thể loại
+		$(".filter-link").click(function (e) {
+			e.preventDefault();
+			var categoryId = $(this).data("category-id"); // Lấy ID của thể loại từ nút đã click
+			var currentFilter = "@ViewBag.CurrentFilter";
+			var newUrl = '@Url.Action("Index", "Shop")' + '?searchString=' + currentFilter + '&categoryId=' + categoryId;
+			window.location.href = newUrl; // Chuyển hướng đến trang mới với thể loại được chọn
+		});
+	});
+
+</script> <!-- Thêm thư viện jQuery -->

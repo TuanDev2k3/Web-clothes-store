@@ -1,0 +1,47 @@
+﻿@model ProDuct
+<div style="display:flex; margin:150px 0">
+    <div class="container">
+        <h1 class="h1 text-gray-800" style="margin-bottom: 20px">Update Inventory</h1>
+        <form method="post" asp-action="EditStock" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="QuantityInStock">QuantityInStock</label>
+                <input asp-for="QuantityInStock" type="text" class="form-control" />
+                <span asp-validation-for="QuantityInStock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" type="text" class="form-control" readonly />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price">Price</label>
+                <input asp-for="Price" type="number" class="form-control" readonly />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: none">
+                <label asp-for="Description">Description</label>
+                <input asp-for="Description" type="text" readonly />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: none">
+                <label asp-for="ImageUrl">Image</label>
+                <input type="text" asp-for="ImageUrl" readonly />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: none">
+                <label asp-for="SanPhamID">Product Type</label>
+                <select asp-for="SanPhamID" asp-items="@ViewBag.DSSanPham" class="form-control my-2">
+                    <option disabled>Select Type</option>
+                </select>
+                <span asp-validation-for="SanPhamID" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary" style="padding: 10px">Update</button>
+            <a asp-controller="QLProduct" asp-action="InStock" class="btn btn-secondary" style="padding: 10px">Cancel</a>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

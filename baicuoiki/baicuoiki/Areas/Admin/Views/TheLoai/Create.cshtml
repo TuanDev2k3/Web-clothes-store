@@ -1,0 +1,26 @@
+﻿@model SanPham
+<div style="display:flex; margin:150px 0">
+    <div class="container">
+        <h3>Add category</h3>
+        <form method="post" asp-action="Create" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Name">Name</label>
+                <input asp-for="Name" type="text" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description">Description</label>
+                <input asp-for="Description" type="text" class="form-control" value="No" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
